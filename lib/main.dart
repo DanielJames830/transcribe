@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:transcribe/presentation/pages/home_page.dart';
+import 'package:transcribe/presentation/style.dart';
 
 void main() {
   runApp(const Transcribe());
@@ -14,9 +16,11 @@ class Transcribe extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        body: Center(child: Text("Transcribe")),
-      ),
+      home: HomePage(),
     );
+  }
+
+  static Style getStyle() {
+    return LightStyle();
   }
 }
