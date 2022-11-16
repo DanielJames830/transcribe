@@ -28,6 +28,9 @@ class LightStyle extends Style {
   Color get backGroundColor => Color(0xff171614);
 
   @override
+  Color get foreGroundColor => Color(0xffBBB4B6);
+
+  @override
   TextStyle get fontStyle => GoogleFonts.pacifico(
         fontStyle: FontStyle.italic,
         color: secondaryColor,

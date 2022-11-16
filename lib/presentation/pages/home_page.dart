@@ -46,8 +46,57 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: DropdownButton(
+                                padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 6),
+                                child: TextFormField(
+                                  initialValue: "Playlist URL",
+                                  textAlignVertical: TextAlignVertical.center,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.only(right: 12),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: style.foreGroundColor),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: style.backGroundColor),
+                                    ),
+                                  ),
+                                  cursorColor: style.backGroundColor,
+                                ),
+                              ),
+                              ListView.builder(
+                                padding: const EdgeInsets.all(20),
+                                shrinkWrap: true,
+                                itemCount: 2,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SongChip(
+                                      index: index,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 8),
+                                  child: DropdownButtonFormField(
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.zero,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: style.foreGroundColor),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: style.backGroundColor),
+                                      ),
+                                    ),
+                                    isExpanded: true,
                                     alignment: Alignment.centerLeft,
                                     items: const [
                                       DropdownMenuItem(
@@ -67,14 +116,10 @@ class HomePage extends StatelessWidget {
                                 itemCount: 2,
                                 itemBuilder: (context, index) {
                                   return Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          (index + 1).toString(),
-                                        ),
-                                        Expanded(child: SongChip()),
-                                      ],
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SongChip(
+                                      index: index,
+                                      invert: true,
                                     ),
                                   );
                                 },
@@ -82,19 +127,54 @@ class HomePage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Expanded(
-                          child: Container(
-                            color: Colors.blue,
-                          ),
-                        ),
                       ],
                     ),
                     FloatingActionButton(
-                      child: Icon(Icons.swap_horiz_sharp, size: 36),
+                      child: const Icon(Icons.swap_horiz_sharp, size: 36),
                       backgroundColor: style.secondaryColor,
                       onPressed: () {},
                     )
                   ],
+                ),
+              ),
+            ),
+            SizedBox(
+              width: size.width * 0.4,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: style.primaryColor,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  boxShadow: const [
+                    BoxShadow(
+                      blurRadius: 20,
+                      color: Colors.grey,
+                      offset: Offset(10, 10),
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    readOnly: true,
+                    initialValue: "https://www.generatedurl.com/playlist",
+                    textAlignVertical: TextAlignVertical.top,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 18,
+                    ),
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(right: 12),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: style.foreGroundColor),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: style.backGroundColor),
+                      ),
+                    ),
+                    cursorColor: style.backGroundColor,
+                  ),
                 ),
               ),
             ),
